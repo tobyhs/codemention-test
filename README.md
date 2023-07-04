@@ -1,2 +1,3 @@
 # codemention-test
-For testing https://github.com/tobyhs/codemention
+
+This is a repo for testing [codemention](https://github.com/tobyhs/codemention).
