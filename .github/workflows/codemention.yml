@@ -11,6 +11,6 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: tobyhs/codemention@main
+      - uses: tobyhs/codemention@improve-node-modules-caching
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
