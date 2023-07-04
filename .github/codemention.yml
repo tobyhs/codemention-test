@@ -1,0 +1,5 @@
+rules:
+  - patterns: ['src/**']
+    mentions: ['tobyhs']
+  - patterns: ['test/**']
+    mentions: ['epr-tester']
