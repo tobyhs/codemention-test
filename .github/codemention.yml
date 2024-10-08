@@ -1,3 +1,7 @@
+commentConfiguration:
+  preamble: '[testing](https://github.com/tobyhs/codemention/pull/15) preamble'
+  epilogue: '[testing](https://github.com/tobyhs/codemention) epilogue'
+
 rules:
   - patterns: ['src/**']
     mentions: ['tobyhs']
