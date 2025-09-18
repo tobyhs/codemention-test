@@ -3,3 +3,10 @@ rules:
     mentions: ['tobyhs']
   - patterns: ['test/**']
     mentions: ['epr-tester']
+
+commentConfiguration:
+  template: |
+    # CodeMention template test
+    {{#each mentions}}
+    @{{name}}: {{#each matchedFiles}}{{markdownEscape this}}{{#unless @last}}, {{/unless}}{{/each}}
+    {{/each}}
