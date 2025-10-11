@@ -7,11 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     steps:
       - uses: actions/checkout@v5
       - name: Configure Git identity
         run: git config user.name "github-actions[bot]"
       - run: ./scripts/create-test-pr
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Need a PAT because using secrets.GITHUB_TOKEN will not trigger
+          # other workflow runs
+          # (https://docs.github.com/en/actions/concepts/security/github_token#when-github_token-triggers-workflow-runs)
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
