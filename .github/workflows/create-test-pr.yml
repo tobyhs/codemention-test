@@ -1,0 +1,15 @@
+name: Create Test PR
+
+on: workflow_dispatch
+
+jobs:
+  create_test_pr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v5
+      - run: ./scripts/create-test-pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
