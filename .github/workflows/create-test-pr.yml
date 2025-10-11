@@ -10,6 +10,8 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v5
+      - name: Configure Git identity
+        run: git config user.name "github-actions[bot]"
       - run: ./scripts/create-test-pr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
