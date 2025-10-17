@@ -1,6 +1,6 @@
 rules:
   - patterns: ['.github/**']
-    patterns: ['epr-tester', 'tobyhs']
+    mentions: ['epr-tester', 'tobyhs']
   - patterns: ['src/**']
     mentions: ['tobyhs']
   - patterns: ['test/**']
