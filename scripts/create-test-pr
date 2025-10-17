@@ -6,8 +6,9 @@ TIMESTAMP="$(date -u +%Y%m%d%H%M%S)"
 BRANCH="dnm-test-${TIMESTAMP}"
 
 git checkout -b "$BRANCH"
+echo "$TIMESTAMP" > src/testing
 echo "$TIMESTAMP" > test/testing
-git add test/testing
+git add src/testing test/testing
 git commit -m "[DNM] Testing - ${TIMESTAMP}"
 git push -u origin "$BRANCH"
 gh pr create --fill
