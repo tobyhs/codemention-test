@@ -15,4 +15,4 @@ jobs:
       - name: Check for DNM
         env:
           PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
-        run: '[[ "$PULL_REQUEST_TITLE" == \[DNM\]* ]]'
+        run: '[[ "$PULL_REQUEST_TITLE" != \[DNM\]* ]]'
