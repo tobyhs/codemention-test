@@ -1,0 +1,18 @@
+name: DNM Blocker
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  dnm-blocker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for DNM
+        env:
+          PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+        run: '[[ "$PULL_REQUEST_TITLE" == \[DNM\]* ]]'
