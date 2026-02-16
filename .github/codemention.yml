@@ -1,3 +1,7 @@
+commentConfiguration:
+  preamble: Test Preamble
+  epilogue: Test Epilogue
+
 rules:
   - patterns: ['.github/**']
     mentions: ['epr-tester', 'tobyhs']
