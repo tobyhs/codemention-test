@@ -3,20 +3,17 @@
 set -euo pipefail
 
 : "${CODEMENTION_BRANCH:=main}"
-BASE_BRANCH=main
+BASE_BRANCH="$(git branch --show-current)"
 TIMESTAMP="$(date -u +%Y%m%d%H%M%S)"
 BRANCH="dnm-test-${TIMESTAMP}"
 
+git checkout -b "$BRANCH"
+
 if [ "$CODEMENTION_BRANCH" != 'main' ]; then
-  BASE_BRANCH="dnm-base-${TIMESTAMP}"
-  git checkout -b "$BASE_BRANCH"
   sed -i "s|\(uses: tobyhs/codemention@\).*|\1${CODEMENTION_BRANCH}|" .github/workflows/codemention.yml
   git add .github/workflows/codemention.yml
-  git commit -m "[DNM] Testing (base) - ${TIMESTAMP}"
-  git push -u origin "$BASE_BRANCH"
 fi
 
-git checkout -b "$BRANCH"
 echo "$TIMESTAMP" > src/testing
 echo "$TIMESTAMP" > test/testing
 git add src/testing test/testing
