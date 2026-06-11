@@ -9,6 +9,7 @@ BRANCH="dnm-test-${TIMESTAMP}"
 
 if [ "$CODEMENTION_BRANCH" != 'main' ]; then
   BASE_BRANCH="dnm-base-${TIMESTAMP}"
+  git checkout -b "$BASE_BRANCH"
   sed -i "s|\(uses: tobyhs/codemention@\).*|\1${CODEMENTION_BRANCH}|" .github/workflows/codemention.yml
   git add .github/workflows/codemention.yml
   git commit -m "[DNM] Testing (base) - ${TIMESTAMP}"
