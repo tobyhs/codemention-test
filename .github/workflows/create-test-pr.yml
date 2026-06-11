@@ -1,6 +1,13 @@
 name: Create Test PR
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      codemention_branch:
+        description: 'codemention branch to test'
+        required: true
+        type: string
+        default: main
 
 jobs:
   create_test_pr:
@@ -8,13 +15,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Configure Git identity
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "noreply@example.com"
       - run: ./scripts/create-test-pr
         env:
+          CODEMENTION_BRANCH: ${{ inputs.codemention_branch }}
           # Need a PAT because using secrets.GITHUB_TOKEN will not trigger
           # other workflow runs
           # (https://docs.github.com/en/actions/concepts/security/github_token#when-github_token-triggers-workflow-runs)
