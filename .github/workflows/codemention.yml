@@ -1,7 +1,10 @@
 name: codemention
 
 on:
-  pull_request_target:
+  # In typical usages of codemention, this should be pull_request_target
+  # instead of pull_request. However, I'm using pull_request for convenience to
+  # test other branches of codemention in the create-test-pr workflow.
+  pull_request:
     types: [opened, synchronize, ready_for_review]
 
 jobs:
