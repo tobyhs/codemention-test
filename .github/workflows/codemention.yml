@@ -12,6 +12,6 @@ jobs:
       pull-requests: write
     steps:
       - run: node --version
-      - uses: tobyhs/codemention@main
+      - uses: tobyhs/codemention@nonexistent-branch
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
