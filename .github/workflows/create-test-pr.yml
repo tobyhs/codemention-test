@@ -12,10 +12,13 @@ on:
 jobs:
   create_test_pr:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Need a PAT because pushing changes to files inside
+          # .github/workflows/ requires the workflows permission and the
+          # workflows permission can't be declared in a workflow file
+          token: ${{ secrets.GH_PAT }}
       - name: Configure Git identity
         run: |
           git config user.name "github-actions[bot]"
