@@ -8,6 +8,10 @@ on:
         required: true
         type: string
         default: main
+      pr_body:
+        description: 'Body for the pull request to create'
+        required: false
+        type: string
 
 jobs:
   create_test_pr:
@@ -26,6 +30,7 @@ jobs:
       - run: ./scripts/create-test-pr
         env:
           CODEMENTION_BRANCH: ${{ inputs.codemention_branch }}
+          PR_BODY: "${{ inputs.pr_body }}"
           # Need a PAT because using secrets.GITHUB_TOKEN will not trigger
           # other workflow runs
           # (https://docs.github.com/en/actions/concepts/security/github_token#when-github_token-triggers-workflow-runs)

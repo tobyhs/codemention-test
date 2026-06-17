@@ -17,6 +17,7 @@ fi
 echo "$TIMESTAMP" > src/testing
 echo "$TIMESTAMP" > test/testing
 git add src/testing test/testing
-git commit -m "[DNM] Testing - ${TIMESTAMP}"
+PR_TITLE="[DNM] Testing - ${TIMESTAMP}"
+git commit -m "$PR_TITLE"
 git push -u origin "$BRANCH"
-gh pr create --base "$BASE_BRANCH" --fill
+gh pr create --base "$BASE_BRANCH" -t "$PR_TITLE" -b "${PR_BODY:-}"
