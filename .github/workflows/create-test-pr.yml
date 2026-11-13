@@ -17,7 +17,7 @@ jobs:
   create_test_pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v7.0.1
         with:
           # Need a PAT because pushing changes to files inside
           # .github/workflows/ requires the workflows permission and the
